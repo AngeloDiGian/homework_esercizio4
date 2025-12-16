@@ -1,0 +1,12 @@
+ip addr add 10.42.132.133/30 dev eth0   # R3
+ip addr add 10.42.132.129/30 dev eth1   # R2
+ip addr add 10.42.132.181/30 dev eth2   # Server
+
+# Routing forzato (verso Server)
+ip route add 10.42.104.0/32 via 10.42.132.182 dev eth2
+
+# Routing (verso R3)
+ip route add 10.42.0.0/16 via 10.42.132.134 dev eth0
+
+# Natting (solo R1)
+iptables -t nat -A POSTROUTING -s 10.42.0.0/16 -o eth2 -j MASQUERADE
