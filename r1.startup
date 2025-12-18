@@ -9,4 +9,4 @@ ip route add 10.42.104.0/32 via 10.42.132.182 dev eth2
 ip route add 10.42.0.0/16 via 10.42.132.134 dev eth0
 
 # Natting (solo R1)
-iptables -t nat -A POSTROUTING -s 10.42.0.0/16 -o eth2 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.42.0.0/16 -o eth3 -j MASQUERADE
